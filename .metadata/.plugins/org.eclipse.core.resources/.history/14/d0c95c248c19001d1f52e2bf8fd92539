@@ -1,0 +1,46 @@
+package org.jcaro.hibernateapp.services;
+
+import java.util.List;
+
+import org.jcaro.hibernateapp.entity.Cliente;
+import org.jcaro.hibernateapp.repositories.ClienteRepositories;
+import org.jcaro.hibernateapp.repositories.CrudRepositories;
+
+import jakarta.persistence.EntityManager;
+
+public class ClienteServicesImp implements ClienteServices{
+	
+	EntityManager em;
+	ClienteRepositories repository;
+
+	public ClienteServicesImp(EntityManager em) {
+		
+		this.em = em;
+		repository = new ClienteRepositories(em);
+	}
+
+	
+	public List<Cliente> listar() {
+		
+		return repository.listar();
+	}
+
+	@Override
+	public Cliente porId(Integer id) {
+		
+		return repository.porId(id);
+	}
+
+	@Override
+	public void guardar(Cliente cliente) {
+		
+		
+	}
+
+	@Override
+	public void eliminar(Cliente cliente) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

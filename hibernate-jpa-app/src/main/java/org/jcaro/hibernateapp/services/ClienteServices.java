@@ -1,0 +1,15 @@
+package org.jcaro.hibernateapp.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.jcaro.hibernateapp.entity.Cliente;
+
+public interface ClienteServices {
+	
+	List<Cliente> listar();
+	Optional<Cliente> porId(Integer id);
+	void guardar(Cliente cliente);
+	void eliminar(Integer id);
+	
+}

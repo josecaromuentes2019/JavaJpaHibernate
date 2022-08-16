@@ -1,0 +1,44 @@
+package org.jcaro.hibernateapp;
+
+import org.jcaro.hibernateapp.entity.Cliente;
+import org.jcaro.hibernateapp.entity.Direccion;
+import org.jcaro.hibernateapp.util.JpaUtil;
+
+import jakarta.persistence.EntityManager;
+
+public class HibernateAsociacionOneToMany {
+
+	public static void main(String[] args) {
+		EntityManager em = JpaUtil.getEntityManager();
+		
+		try {
+			em.getTransaction().begin();
+			
+			Cliente cliente = new Cliente("Luisa", "Ospino");
+			cliente.setFormaDePago("paypal");
+			
+			Direccion d1 = new Direccion("El Rosario", 11L);
+			Direccion d2 = new Direccion("El Valle", 05L);
+			
+			cliente.getDirecciones().add(d1);
+			cliente.getDirecciones().add(d2);
+			
+			em.persist(cliente);
+			
+			em.getTransaction().commit();
+			System.out.println(cliente);
+			
+			//eliminar direccion de cliente
+			em.getTransaction().begin();
+			cliente = em.find(Cliente.class, cliente.getId());
+			cliente.getFacturas().remove(d2);
+			em.getTransaction().commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}finally {
+			em.close();
+		}
+	}
+}

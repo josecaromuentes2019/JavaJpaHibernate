@@ -1,0 +1,8 @@
+package org.jcaro.hibernateapp;
+
+public class Snippet {
+	public static void main(String[] args) {
+		formaDePago
+	}
+}
+

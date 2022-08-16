@@ -1,0 +1,27 @@
+package org.jcaro.hibernateapp.entity;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+
+public class Auditoria {
+
+	@Column(name = "create_date")
+	private LocalDateTime createDate;
+	
+	@Column(name = "last_modified_date")
+	private LocalDateTime lastModifiedDate;
+	
+	@PrePersist
+	public void antesDeCrear() {
+		this.createDate = LocalDateTime.now();
+		this.lastModifiedDate = LocalDateTime.now();
+	}
+
+	@PreUpdate
+	public void antesDeActualizar() {
+		this.lastModifiedDate = LocalDateTime.now();
+	}
+}

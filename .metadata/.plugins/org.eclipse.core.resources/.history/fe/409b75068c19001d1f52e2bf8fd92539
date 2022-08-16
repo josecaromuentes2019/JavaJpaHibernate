@@ -1,0 +1,5 @@
+package org.jcaro.hibernateapp.repositories;
+
+public class ClienteRepositories {
+
+}

@@ -1,0 +1,5 @@
+package org.jcaro.hibernateapp.entity.util.copy;
+
+public class JpaUtil {
+
+}

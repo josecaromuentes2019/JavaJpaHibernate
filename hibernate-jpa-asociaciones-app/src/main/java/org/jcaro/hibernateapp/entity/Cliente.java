@@ -37,8 +37,7 @@ public class Cliente {
 	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, mappedBy ="cliente")
 	private List<Factura> facturas;
 	
-	@OneToOne
-	@JoinColumn(name = "detalle_cliente_id")
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
 	private ClienteDetalle detalle;
 	
 	public Cliente() {
@@ -130,6 +129,16 @@ public class Cliente {
 
 	public void setDetalle(ClienteDetalle detalle) {
 		this.detalle = detalle;
+	}
+	
+	public void removeDetalle(ClienteDetalle detalle) {
+		this.detalle = detalle;
+		detalle.setCliente(this);
+	}
+	
+	public void addDetalle() {
+		detalle.setCliente(null);
+		this.detalle = null;
 	}
 
 	@Override

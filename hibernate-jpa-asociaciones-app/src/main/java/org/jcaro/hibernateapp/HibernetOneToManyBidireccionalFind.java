@@ -19,7 +19,7 @@ public class HibernetOneToManyBidireccionalFind {
 			Factura f1 = new Factura("Electrodomesticos",1000L);
 			Factura f2 = new Factura("Equipos de computo", 3000L);
 			
-			cliente.addClientes(f1).addClientes(f2);
+			cliente.addFactura(f1).addFactura(f2);
 
 			//em.persist(cliente);
 			em.getTransaction().commit();

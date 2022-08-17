@@ -5,7 +5,9 @@
         <class>org.jcaro.hibernateapp.entity.Cliente</class>
         <class>org.jcaro.hibernateapp.entity.Factura</class>
         <class>org.jcaro.hibernateapp.entity.Direccion</class>
-         <class>org.jcaro.hibernateapp.entity.ClienteDetalle</class>
+        <class>org.jcaro.hibernateapp.entity.ClienteDetalle</class>
+        <class>org.jcaro.hibernateapp.entity.Alumno</class>
+        <class>org.jcaro.hibernateapp.entity.Curso</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
        <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/java_hibernate_curso?serverTimezone=America/Bogota"/>

@@ -3,6 +3,7 @@ package org.jcaro.hibernateapp.entity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.hibernate.criterion.DetachedCriteria;
 
@@ -61,11 +62,19 @@ public class Cliente {
 	}
 	
 	public Cliente addClientes(Factura factura) {
+		return addFactura(factura);
+	}
+
+	public Cliente addFactura(Factura factura) {
 		this.facturas.add(factura);
 		factura.setCliente(this);
 		
 		return this;
 	}
+	public void removeFactura(Factura factura) {
+        this.facturas.remove(factura);
+        factura.setCliente(null);
+    }
 
 	public Integer getId() {
 		return id;
@@ -131,14 +140,31 @@ public class Cliente {
 		this.detalle = detalle;
 	}
 	
-	public void removeDetalle(ClienteDetalle detalle) {
-		this.detalle = detalle;
-		detalle.setCliente(this);
-	}
+	public void removeDetalle() {
+        detalle.setCliente(null);
+        this.detalle = null;
+    }
 	
-	public void addDetalle() {
-		detalle.setCliente(null);
-		this.detalle = null;
+    public void addDetalle(ClienteDetalle detalle) {
+        this.detalle = detalle;
+        detalle.setCliente(this);
+    }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(id, other.id);
 	}
 
 	@Override

@@ -1,7 +1,0 @@
-package org.jcaro.hibernateapp;
-
-public class HibernateList {
-	public static void main(String[] args) {
-		
-	}
-}
